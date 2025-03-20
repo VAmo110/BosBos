@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var productDetails = this.closest('.section').querySelector('p').textContent;
             document.getElementById('productDetails').textContent = productDetails;
             modal.style.display = "block";
-            new Audio('https://www.soundjay.com/buttons/beep-01a.mp3').play(); // صوت كليك
+            new Audio('https://www.soundjay.com/buttons/beep-01a.mp3').play();
         });
 
         button.addEventListener('mouseenter', function () {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <h3>Order Submitted</h3>
                 <p>Thank you, <strong>${fullName}</strong>! Your order has been received. We will contact you at: <em>${address}</em>.</p>
             `;
-            new Audio('https://www.soundjay.com/buttons/beep-07.mp3').play(); // صوت تأكيد
+            new Audio('https://www.soundjay.com/buttons/beep-07.mp3').play();
         }
     });
 
