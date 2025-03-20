@@ -112,7 +112,7 @@ nav a:hover {
     font-weight: bold;
 }
 
-.order-section, .faq-section {
+.order-section, .contact-section {
     background-color: #455a64;
     color: #e0e0e0;
 }
@@ -235,7 +235,7 @@ footer {
     font-weight: bold;
 }
 
-/* ستايل محدد المقاسات */
+/* ستايل محدد المقاسات والحاسبة */
 #sizeFinder input, #priceCalculator input {
     padding: 8px;
     margin: 5px;
