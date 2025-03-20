@@ -194,4 +194,65 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('sizeResult').textContent = `Suggested Size: ${size}`;
         new Audio('https://www.soundjay.com/buttons/beep-01a.mp3').play();
     });
+
+    // تأثير الكونفيتي
+    function createConfetti() {
+        const canvas = document.createElement('canvas');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = '1000';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const confetti = [];
+        const colors = ['#607d8b', '#e0e0e0', '#fff', '#ff6f61'];
+
+        for (let i = 0; i < 100; i++) {
+            confetti.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                r: Math.random() * 10 + 5,
+                d: Math.random() * 5 + 2,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                tilt: Math.random() * 10 - 5
+            });
+        }
+
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach((c, i) => {
+                c.y += c.d;
+                c.tilt += 0.1;
+                if (c.y > canvas.height) c.y = -20;
+                ctx.beginPath();
+                ctx.fillStyle = c.color;
+                ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(drawConfetti);
+        }
+        drawConfetti();
+    }
+
+    // نافذة عيد الميلاد
+    const birthdayPopup = document.getElementById('birthdayPopup');
+    const birthdayClose = document.querySelector('.birthday-close');
+    birthdayPopup.style.display = 'block';
+    createConfetti();
+
+    birthdayClose.onclick = function() {
+        birthdayPopup.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+        if (event.target == birthdayPopup) {
+            birthdayPopup.style.display = 'none';
+        }
+    };
 });
