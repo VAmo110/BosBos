@@ -1,17 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // نافذة منبثقة لعرض تفاصيل المنتجات
+    // Modal لتفاصيل المنتجات
     var modal = document.getElementById("productModal");
     var span = document.getElementsByClassName("close")[0];
 
-    // عند النقر على الزر لعرض التفاصيل
     document.querySelectorAll('.view-details').forEach(button => {
         button.addEventListener('click', function () {
             var productDetails = this.closest('.section').querySelector('p').textContent;
             document.getElementById('productDetails').textContent = productDetails;
             modal.style.display = "block";
+            new Audio('https://www.soundjay.com/buttons/beep-01a.mp3').play(); // صوت كليك
         });
 
-        // تأثير حركة خفيفة عند تمرير الماوس
         button.addEventListener('mouseenter', function () {
             this.style.transform = "scale(1.1)";
             this.style.transition = "transform 0.2s";
@@ -22,27 +21,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // عند النقر على × لإغلاق النافذة
     span.onclick = function () {
         modal.style.display = "none";
     };
 
-    // عند النقر في أي مكان خارج النافذة
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     };
 
-    // Form submission interaction for Order Online
+    // Form submission
     document.getElementById('orderForm').addEventListener('submit', function (e) {
         e.preventDefault();
-
         var fullName = document.getElementById('fullName').value.trim();
         var address = document.getElementById('address').value.trim();
 
         if (fullName === "" || address === "") {
-            // عرض تحذير للمستخدم
             var warningMessage = document.getElementById('warningMessage');
             if (!warningMessage) {
                 warningMessage = document.createElement('p');
@@ -53,16 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('orderForm').appendChild(warningMessage);
             }
         } else {
-            // إخفاء الفورم وإظهار رسالة تأكيد
-            var orderSection = document.getElementById('order-online');
-            orderSection.innerHTML = `
+            document.getElementById('order-online').innerHTML = `
                 <h3>Order Submitted</h3>
-                <p>Thank you, <strong>${fullName}</strong>! Your order has been received. We will contact you at the provided address: <em>${address}</em>.</p>
+                <p>Thank you, <strong>${fullName}</strong>! Your order has been received. We will contact you at: <em>${address}</em>.</p>
             `;
+            new Audio('https://www.soundjay.com/buttons/beep-07.mp3').play(); // صوت تأكيد
         }
     });
 
-    // Navigation smooth scrolling
+    // Smooth scrolling
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -72,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // إضافة زرار الثيم الليلي/النهاري
+    // الثيم الليلي/النهاري
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', function() {
         document.body.classList.toggle('dark-mode');
@@ -83,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // إضافة الاقتباسات العشوائية
+    // الاقتباسات العشوائية
     const quotes = [
         "Fashion is the armor to survive the reality of everyday life. – Bill Cunningham",
         "Style is a way to say who you are without having to speak. – Rachel Zoe",
@@ -94,15 +88,110 @@ document.addEventListener('DOMContentLoaded', function () {
         const randomIndex = Math.floor(Math.random() * quotes.length);
         document.getElementById('quoteText').textContent = quotes[randomIndex];
     }
-
     displayRandomQuote();
-    setInterval(displayRandomQuote, 5000); // يتغير كل 5 ثواني
+    setInterval(displayRandomQuote, 5000);
 
-    // إضافة حاسبة الأسعار
+    // حاسبة الأسعار
     document.getElementById('calculateBtn').addEventListener('click', function() {
         const price = parseFloat(document.getElementById('itemPrice').value) || 0;
         const quantity = parseInt(document.getElementById('quantity').value) || 1;
         const total = price * quantity;
         document.getElementById('totalPrice').textContent = `Total: ${total.toFixed(2)} EGP`;
+        new Audio('https://www.soundjay.com/buttons/beep-01a.mp3').play();
+    });
+
+    // Carousel
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    function updateCarousel() {
+        const offset = -currentIndex * 100;
+        document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+    }
+
+    document.querySelector('.next').addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    });
+
+    document.querySelector('.prev').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    });
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    }, 5000);
+
+    // مؤشر الموسم
+    const seasons = ["Winter", "Spring", "Summer", "Fall"];
+    const month = new Date().getMonth();
+    const seasonIndex = Math.floor(month / 3) % 4;
+    document.getElementById('seasonText').textContent = `Current Season: ${seasons[seasonIndex]}`;
+
+    // عجلة الحظ
+    const canvas = document.getElementById('wheel');
+    const ctx = canvas.getContext('2d');
+    const prizes = ["10% Off", "Free Shipping", "20% Off", "Try Again"];
+    let startAngle = 0;
+    let spinAngle = 0;
+    let spinning = false;
+
+    function drawWheel() {
+        const arc = Math.PI / (prizes.length / 2);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < prizes.length; i++) {
+            const angle = startAngle + i * arc;
+            ctx.fillStyle = i % 2 === 0 ? '#607d8b' : '#e0e0e0';
+            ctx.beginPath();
+            ctx.arc(150, 150, 140, angle, angle + arc);
+            ctx.lineTo(150, 150);
+            ctx.fill();
+            ctx.save();
+            ctx.fillStyle = '#fff';
+            ctx.translate(150, 150);
+            ctx.rotate(angle + arc / 2);
+            ctx.fillText(prizes[i], 60, 10);
+            ctx.restore();
+        }
+    }
+
+    document.getElementById('spinBtn').addEventListener('click', function() {
+        if (!spinning) {
+            spinning = true;
+            spinAngle = Math.random() * 10 + 10;
+            let rotation = 0;
+            const spinInterval = setInterval(() => {
+                rotation += spinAngle;
+                startAngle += spinAngle * Math.PI / 180;
+                drawWheel();
+                spinAngle *= 0.95;
+                if (spinAngle < 0.05) {
+                    clearInterval(spinInterval);
+                    spinning = false;
+                    const prizeIndex = Math.floor(((startAngle % (2 * Math.PI)) / (2 * Math.PI)) * prizes.length);
+                    document.getElementById('spinResult').textContent = `You won: ${prizes[prizeIndex]}!`;
+                    new Audio('https://www.soundjay.com/buttons/beep-07.mp3').play();
+                }
+            }, 20);
+        }
+    });
+    drawWheel();
+
+    // محدد المقاسات
+    document.getElementById('findSizeBtn').addEventListener('click', function() {
+        const height = parseFloat(document.getElementById('height').value) || 0;
+        const weight = parseFloat(document.getElementById('weight').value) || 0;
+        let size = "Unknown";
+        if (height > 0 && weight > 0) {
+            if (height < 150 && weight < 50) size = "Small";
+            else if (height < 170 && weight < 70) size = "Medium";
+            else if (height < 190 && weight < 90) size = "Large";
+            else size = "X-Large";
+        }
+        document.getElementById('sizeResult').textContent = `Suggested Size: ${size}`;
+        new Audio('https://www.soundjay.com/buttons/beep-01a.mp3').play();
     });
 });
