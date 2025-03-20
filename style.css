@@ -174,7 +174,6 @@ footer {
     transform: scale(1.05);
 }
 
-/* ستايل الـ Carousel */
 .carousel {
     position: relative;
     max-width: 800px;
@@ -217,14 +216,12 @@ footer {
     right: 10px;
 }
 
-/* ستايل مؤشر الموسم */
 .season-indicator {
     margin-top: 10px;
     font-size: 14px;
     color: #607d8b;
 }
 
-/* ستايل عجلة الحظ */
 #wheel {
     display: block;
     margin: 20px auto;
@@ -235,7 +232,6 @@ footer {
     font-weight: bold;
 }
 
-/* ستايل محدد المقاسات والحاسبة */
 #sizeFinder input, #priceCalculator input {
     padding: 8px;
     margin: 5px;
@@ -258,4 +254,30 @@ footer {
     font-style: italic;
     color: #607d8b;
     transition: opacity 0.5s ease-in-out;
+}
+
+/* ستايل نافذة عيد الميلاد */
+.birthday-modal {
+    background-color: #455a64;
+    color: #e0e0e0;
+    border: 2px solid #607d8b;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.birthday-modal h2 {
+    color: #fff;
+}
+
+.birthday-modal p {
+    color: #e0e0e0;
+}
+
+.birthday-close {
+    color: #fff;
+}
+
+.birthday-close:hover,
+.birthday-close:focus {
+    color: #607d8b;
 }
