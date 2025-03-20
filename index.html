@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basmala's Fashion Store</title>
+</head>
+<body>
+    <header>
+        <img src="image/download1.png" alt="Basmala's Fashion Store Logo">
+        <h1>Basmala's Fashion Store</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about-us">About Us</a>
+        <a href="#products">Products</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact-us">Contact</a>
+        <a href="#order-online">Order Online</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#faq">FAQ</a>
+        <a href="#social">Follow Us</a>
+        <a href="#blog">Blog</a>
+    </nav>
+
+    <div id="home" class="main-content">
+        <div class="welcome-box">
+            <h2>Welcome to Basmala's Fashion Store</h2>
+            <p>Your one-stop shop for the latest in women's fashion. Explore our collection today!</p>
+        </div>
+
+        <div id="kids-clothing" class="section">
+            <h3>Kids' Clothing</h3>
+            <img src="https://example.com/kids-clothing1.jpg" alt="Kids' Clothing">
+            <p>Discover our adorable collection of children's clothing.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="girls-clothing" class="section">
+            <h3>Girls' Clothing</h3>
+            <img src="C:\Users\lenovo\Desktop\Rawda\image" alt="Girls' Clothing">
+            <p>Trendy and stylish outfits for girls.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="womens-clothing" class="section">
+            <h3>Women's Clothing</h3>
+            <img src="https://example.com/womens-clothing1.jpg" alt="Women's Clothing">
+            <p>Elegant and fashionable clothing for women.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="mens-clothing" class="section">
+            <h3>Men's Clothing</h3>
+            <img src="https://example.com/mens-clothing1.jpg" alt="Men's Clothing">
+            <p>Stylish and modern clothing for men.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="shoes" class="section">
+            <h3>Shoes</h3>
+            <img src="https://example.com/shoes1.jpg" alt="Shoes">
+            <p>High-quality and fashionable shoes for all occasions.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="womens-accessories" class="section">
+            <h3>Women's Accessories</h3>
+            <img src="https://example.com/accessories1.jpg" alt="Women's Accessories">
+            <p>Beautiful accessories to complement your style.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="perfumes" class="section">
+            <h3>Perfumes</h3>
+            <img src="https://example.com/perfumes1.jpg" alt="Perfumes">
+            <p>Exclusive collection of perfumes to enhance your aura.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="makeup" class="section">
+            <h3>Makeup</h3>
+            <img src="https://example.com/makeup1.jpg" alt="Makeup">
+            <p>Top-notch makeup products to highlight your beauty.</p>
+            <button class="view-details">View Details</button>
+        </div>
+
+        <div id="about-us" class="section">
+            <h3>About Us</h3>
+            <p>At Basmala's Fashion Store, we take pride in offering a wide range of models from various brands such as Zara and SH&N. We strive to provide the best authentic products imported from top international brands to ensure the highest quality for our customers.</p>
+        </div>
+
+        <div id="contact-us" class="contact-section">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:basmala.fashion@gmail.com" style="color: #fff;">basmala.fashion@gmail.com</a></p>
+            <p>Phone: <a href="tel:011284649273" style="color: #fff;">011284649273</a></p>
+            <p>WhatsApp: <a href="https://wa.me/011284649273" style="color: #fff;">Click here to chat on WhatsApp</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/basmala.adel.194201?igsh=enV0ajh2N2JvazQ5" style="color: #fff;">@Basmalasfashion</a></p>
+            <p>Facebook: <a href="https://www.facebook.com/share/15sZfNx3Gm/?mibextid=wwXIfr" style="color: #fff;">/Basmala.fashion.store</a></p>
+        </div>
+
+        <div id="order-online" class="order-section">
+            <h3>Order Online</h3>
+            <form id="orderForm">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+        
+                <label for="address">Detailed Address:</label>
+                <input type="text" id="address" name="address" required>
+
+                <button type="submit">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; “© 2025 Basmala’s Fashion Store. All rights reserved.”</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById("productModal");
+            var span = document.getElementsByClassName("close")[0];
+
+            document.querySelectorAll('.view-details').forEach(button => {
+                button.addEventListener('click', function () {
+                    var productDetails = this.closest('.section').querySelector('p').textContent;
+                    document.getElementById('productDetails').textContent = productDetails;
+                    modal.style.display = "block";
+                });
+
+                button.addEventListener('mouseenter', function () {
+                    this.style.transform = "scale(1.1)";
+                    this.style.transition = "transform 0.2s";
+                });
+
+                button.addEventListener('mouseleave', function () {
+                    this.style.transform = "scale(1)";
+                });
+            });
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            };
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+
+            document.getElementById('orderForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                var fullName = document.getElementById('fullName').value.trim();
+                var address = document.getElementById('address').value.trim();
+
+                if (fullName === "" || address === "") {
+                    var warningMessage = document.getElementById('warningMessage');
+                    if (!warningMessage) {
+                        warningMessage = document.createElement('p');
+                        warningMessage.id = 'warningMessage';
+                        warningMessage.style.color = 'red';
+                        warningMessage.style.marginTop = '10px';
+                        warningMessage.textContent = "⚠ الرجاء إدخال جميع البيانات قبل إرسال الطلب!";
+                        document.getElementById('orderForm').appendChild(warningMessage);
+                    }
+                } else {
+                    document.getElementById('order-online').innerHTML = <h3>Order Submitted</h3><p>Thank you, <strong>${fullName}</strong>! Your order has been received.</p>;
+                }
+            });
+        });
+    </script>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Product Details</h2>
+            <p id="productDetails"></p>
+        </div>
+    </div>
+</body>
+</html>
