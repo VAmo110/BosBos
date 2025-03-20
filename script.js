@@ -71,4 +71,38 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+
+    // إضافة زرار الثيم الليلي/النهاري
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            themeToggle.textContent = 'Switch to Dark Mode';
+        } else {
+            themeToggle.textContent = 'Switch to Light Mode';
+        }
+    });
+
+    // إضافة الاقتباسات العشوائية
+    const quotes = [
+        "Fashion is the armor to survive the reality of everyday life. – Bill Cunningham",
+        "Style is a way to say who you are without having to speak. – Rachel Zoe",
+        "Elegance is not standing out, but being remembered. – Giorgio Armani"
+    ];
+
+    function displayRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quoteText').textContent = quotes[randomIndex];
+    }
+
+    displayRandomQuote();
+    setInterval(displayRandomQuote, 5000); // يتغير كل 5 ثواني
+
+    // إضافة حاسبة الأسعار
+    document.getElementById('calculateBtn').addEventListener('click', function() {
+        const price = parseFloat(document.getElementById('itemPrice').value) || 0;
+        const quantity = parseInt(document.getElementById('quantity').value) || 1;
+        const total = price * quantity;
+        document.getElementById('totalPrice').textContent = `Total: ${total.toFixed(2)} EGP`;
+    });
 });
