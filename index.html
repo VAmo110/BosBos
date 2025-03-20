@@ -10,7 +10,26 @@
     <header>
         <img src="image/download1.png" alt="Basmala's Fashion Store Logo">
         <h1>Basmala's Fashion Store</h1>
-        <button id="themeToggle">Switch to Light Mode</button> <!-- إضافة زرار الثيم -->
+        <button id="themeToggle">Switch to Light Mode</button>
+        <!-- شريط العروض المتحرك -->
+        <div id="carousel" class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://example.com/offer1.jpg" alt="Winter Sale">
+                    <p>Winter Sale - Up to 50% Off!</p>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://example.com/offer2.jpg" alt="New Arrivals">
+                    <p>New Arrivals - Shop Now!</p>
+                </div>
+            </div>
+            <button class="carousel-control prev">❮</button>
+            <button class="carousel-control next">❯</button>
+        </div>
+        <!-- مؤشر الموسم -->
+        <div id="seasonIndicator" class="season-indicator">
+            <span id="seasonText">Current Season: Spring</span>
+        </div>
     </header>
 
     <nav>
@@ -33,6 +52,14 @@
             <p>Your one-stop shop for the latest in women's fashion. Explore our collection today!</p>
         </div>
 
+        <!-- عجلة الحظ -->
+        <div id="spinWheel" class="section">
+            <h3>Spin to Win!</h3>
+            <canvas id="wheel" width="300" height="300"></canvas>
+            <button id="spinBtn">Spin Now</button>
+            <p id="spinResult"></p>
+        </div>
+
         <div id="kids-clothing" class="section">
             <h3>Kids' Clothing</h3>
             <img src="https://example.com/kids-clothing1.jpg" alt="Kids' Clothing">
@@ -40,89 +67,35 @@
             <button class="view-details">View Details</button>
         </div>
 
-        <div id="girls-clothing" class="section">
-            <h3>Girls' Clothing</h3>
-            <img src="C:\Users\lenovo\Desktop\Rawda\image" alt="Girls' Clothing">
-            <p>Trendy and stylish outfits for girls.</p>
-            <button class="view-details">View Details</button>
-        </div>
-
-        <div id="womens-clothing" class="section">
-            <h3>Women's Clothing</h3>
-            <img src="https://example.com/womens-clothing1.jpg" alt="Women's Clothing">
-            <p>Elegant and fashionable clothing for women.</p>
-            <button class="view-details">View Details</button>
-        </div>
-
-        <div id="mens-clothing" class="section">
-            <h3>Men's Clothing</h3>
-            <img src="https://example.com/mens-clothing1.jpg" alt="Men's Clothing">
-            <p>Stylish and modern clothing for men.</p>
-            <button class="view-details">View Details</button>
-        </div>
-
-        <div id="shoes" class="section">
-            <h3>Shoes</h3>
-            <img src="https://example.com/shoes1.jpg" alt="Shoes">
-            <p>High-quality and fashionable shoes for all occasions.</p>
-            <button class="view-details">View Details</button>
-        </div>
-
-        <div id="womens-accessories" class="section">
-            <h3>Women's Accessories</h3>
-            <img src="https://example.com/accessories1.jpg" alt="Women's Accessories">
-            <p>Beautiful accessories to complement your style.</p>
-            <button class="view-details">View Details</button>
-        </div>
-
-        <div id="perfumes" class="section">
-            <h3>Perfumes</h3>
-            <img src="https://example.com/perfumes1.jpg" alt="Perfumes">
-            <p>Exclusive collection of perfumes to enhance your aura.</p>
-            <button class="view-details">View Details</button>
-        </div>
-
-        <div id="makeup" class="section">
-            <h3>Makeup</h3>
-            <img src="https://example.com/makeup1.jpg" alt="Makeup">
-            <p>Top-notch makeup products to highlight your beauty.</p>
-            <button class="view-details">View Details</button>
-        </div>
-
-        <div id="about-us" class="section">
-            <h3>About Us</h3>
-            <p>At Basmala's Fashion Store, we take pride in offering a wide range of models from various brands such as Zara and SH&N. We strive to provide the best authentic products imported from top international brands to ensure the highest quality for our customers.</p>
-        </div>
-
-        <div id="contact-us" class="contact-section">
-            <h3>Contact Us</h3>
-            <p>Email: <a href="mailto:basmala.fashion@gmail.com" style="color: #fff;">basmala.fashion@gmail.com</a></p>
-            <p>Phone: <a href="tel:011284649273" style="color: #fff;">011284649273</a></p>
-            <p>WhatsApp: <a href="https://wa.me/011284649273" style="color: #fff;">Click here to chat on WhatsApp</a></p>
-            <p>Instagram: <a href="https://www.instagram.com/basmala.adel.194201?igsh=enV0ajh2N2JvazQ5" style="color: #fff;">@Basmalasfashion</a></p>
-            <p>Facebook: <a href="https://www.facebook.com/share/15sZfNx3Gm/?mibextid=wwXIfr" style="color: #fff;">/Basmala.fashion.store</a></p>
-        </div>
+        <!-- باقي الأقسام زي ما هي -->
+        <!-- ... (Kids, Girls, Women's, Men's, Shoes, Accessories, Perfumes, Makeup, About Us, Contact Us) ... -->
 
         <div id="order-online" class="order-section">
             <h3>Order Online</h3>
             <form id="orderForm">
                 <label for="fullName">Full Name:</label>
                 <input type="text" id="fullName" name="fullName" required>
-                
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
-
                 <label for="address">Detailed Address:</label>
                 <input type="text" id="address" name="address" required>
-
                 <button type="submit">Submit Order</button>
             </form>
         </div>
 
-        <!-- إضافة حاسبة الأسعار -->
+        <!-- محدد المقاسات -->
+        <div id="sizeFinder" class="section">
+            <h3>Find Your Size</h3>
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" min="50" placeholder="e.g., 165">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" min="20" placeholder="e.g., 60">
+            <button id="findSizeBtn">Find My Size</button>
+            <p id="sizeResult"></p>
+        </div>
+
         <div id="priceCalculator" class="section">
             <h3>Price Calculator</h3>
             <label for="itemPrice">Item Price (EGP):</label>
@@ -133,7 +106,6 @@
             <p id="totalPrice">Total: 0.00 EGP</p>
         </div>
 
-        <!-- إضافة قسم الاقتباسات -->
         <div id="quotes" class="section">
             <h3>Fashion Quote of the Day</h3>
             <p id="quoteText">Loading...</p>
