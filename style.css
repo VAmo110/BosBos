@@ -1,4 +1,3 @@
-/* الكود CSS كما هو دون تغيير */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
@@ -177,4 +176,61 @@ footer {
 .view-details:hover {
     box-shadow: 0 0 10px #ffffff;
     transform: scale(1.05);
+}
+
+/* إضافة ستايل لزر الثيم */
+#themeToggle {
+    background-color: #607d8b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#themeToggle:hover {
+    box-shadow: 0 0 10px #ffffff;
+    transform: scale(1.05);
+}
+
+/* إضافة ستايل لحاسبة الأسعار */
+#priceCalculator input {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #607d8b;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+#priceCalculator button {
+    background-color: #607d8b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+#priceCalculator button:hover {
+    box-shadow: 0 0 10px #ffffff;
+    transform: scale(1.05);
+}
+
+#totalPrice {
+    font-weight: bold;
+    color: #607d8b;
+}
+
+/* إضافة ستايل للاقتباسات */
+#quotes {
+    text-align: center;
+}
+
+#quoteText {
+    font-style: italic;
+    color: #607d8b;
+    transition: opacity 0.5s ease-in-out;
 }
