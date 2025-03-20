@@ -10,6 +10,7 @@
     <header>
         <img src="image/download1.png" alt="Basmala's Fashion Store Logo">
         <h1>Basmala's Fashion Store</h1>
+        <button id="themeToggle">Switch to Light Mode</button> <!-- إضافة زرار الثيم -->
     </header>
 
     <nav>
@@ -114,80 +115,43 @@
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
 
-        
                 <label for="address">Detailed Address:</label>
                 <input type="text" id="address" name="address" required>
 
                 <button type="submit">Submit Order</button>
             </form>
         </div>
+
+        <!-- إضافة حاسبة الأسعار -->
+        <div id="priceCalculator" class="section">
+            <h3>Price Calculator</h3>
+            <label for="itemPrice">Item Price (EGP):</label>
+            <input type="number" id="itemPrice" min="0" step="0.01" placeholder="e.g., 50.00">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" min="1" value="1">
+            <button id="calculateBtn">Calculate Total</button>
+            <p id="totalPrice">Total: 0.00 EGP</p>
+        </div>
+
+        <!-- إضافة قسم الاقتباسات -->
+        <div id="quotes" class="section">
+            <h3>Fashion Quote of the Day</h3>
+            <p id="quoteText">Loading...</p>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; “© 2025 Basmala’s Fashion Store. All rights reserved.”</p>
+        <p>© “© 2025 Basmala’s Fashion Store. All rights reserved.”</p>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var modal = document.getElementById("productModal");
-            var span = document.getElementsByClassName("close")[0];
-
-            document.querySelectorAll('.view-details').forEach(button => {
-                button.addEventListener('click', function () {
-                    var productDetails = this.closest('.section').querySelector('p').textContent;
-                    document.getElementById('productDetails').textContent = productDetails;
-                    modal.style.display = "block";
-                });
-
-                button.addEventListener('mouseenter', function () {
-                    this.style.transform = "scale(1.1)";
-                    this.style.transition = "transform 0.2s";
-                });
-
-                button.addEventListener('mouseleave', function () {
-                    this.style.transform = "scale(1)";
-                });
-            });
-
-            span.onclick = function () {
-                modal.style.display = "none";
-            };
-
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            };
-
-            document.getElementById('orderForm').addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                var fullName = document.getElementById('fullName').value.trim();
-                var address = document.getElementById('address').value.trim();
-
-                if (fullName === "" || address === "") {
-                    var warningMessage = document.getElementById('warningMessage');
-                    if (!warningMessage) {
-                        warningMessage = document.createElement('p');
-                        warningMessage.id = 'warningMessage';
-                        warningMessage.style.color = 'red';
-                        warningMessage.style.marginTop = '10px';
-                        warningMessage.textContent = "⚠ الرجاء إدخال جميع البيانات قبل إرسال الطلب!";
-                        document.getElementById('orderForm').appendChild(warningMessage);
-                    }
-                } else {
-                    document.getElementById('order-online').innerHTML = <h3>Order Submitted</h3><p>Thank you, <strong>${fullName}</strong>! Your order has been received.</p>;
-                }
-            });
-        });
-    </script>
 
     <div id="productModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close">×</span>
             <h2>Product Details</h2>
             <p id="productDetails"></p>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
